@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,15 @@
   },
   "homepage": "https://github.com/justinjung90/SpitItOut",
   "devDependencies": {
-    "webpack": "^1.7.3"
+    "css-loader": "^0.9.1",
+    "file-loader": "^0.8.1",
+    "jsx-loader": "^0.12.2",
+    "less": "^2.4.0",
+    "less-loader": "^2.2.0",
+    "react": "^0.13.1",
+    "style-loader": "^0.9.0",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.8.0"
   }
 }
