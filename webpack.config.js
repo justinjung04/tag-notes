@@ -28,6 +28,8 @@ var config = {
 	}
 };
 
-config.addVendor('react', path.resolve(node_modules, 'react/dist/react.min.js'));
+//config.addVendor('react', path.resolve(node_modules, 'react/dist/react.min.js'));
+//config.addVendor('jquery', path.resolve(node_modules, 'jquery/dist/jquery.min.js'));
+//config.addVendor('bootstrapCss', path.resolve(node_modules, 'bootstrap/dist/css/bootstrap.min.css'));
 
 module.exports = config;
