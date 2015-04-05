@@ -1,10 +1,9 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
 
-
 var PageHeader = ReactBootstrap.PageHeader;
 
-var Header = React.createClass({
+var AppTitle = React.createClass({
 	render: function() {
 		return (
 			<PageHeader id="header">Spit It Out <small>by Justin Jung</small></PageHeader>
@@ -12,4 +11,4 @@ var Header = React.createClass({
 	}
 });
 
-module.exports = Header;
+module.exports = AppTitle;
