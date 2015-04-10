@@ -1,57 +1,20 @@
 body {
-	background-color: #ECECEA;
-}
-
-#header {
-	color: #3B3738;
+	background: #F3FAB6;
 }
 
 #add-button {
     width: 100%;
 }
 
-#tag-card-one {
-	position: absolute;
-	left: 200px;
-	top: 200px;
-	background-color: #7E8F7C;
-	width: 500px;
-	height: 500px;
+#tag-card {
 	color: white;
-	font-size: 50px;
-}
-
-#tag-card-two {
-	position: absolute;
-	left: 720px;
-	top: 200px;
-	background-color: #A8CD1B;
-	width: 200px;
-	height: 200px;
-	color: white;
-	font-size: 20px;
-}
-
-#tag-card-three {
-	position: absolute;
-	left: 940px;
-	top: 200px;
+	border-radius: 0px;
 	background-color: #558C89;
-	width: 100px;
-	height: 100px;
-	color: white;
-	font-size: 15px;
+	margin-left: 5px;
 }
 
-#tag-card-four {
-	position: absolute;
-	left: 1060px;
-	top: 200px;
-	background-color: #E44424;
-	width: 100px;
-	height: 100px;
-	color: white;
-	font-size: 15px;
+#tag-card:hover {
+	background-color: #74AFAD;
 }
 
 #submit-button {
@@ -63,14 +26,22 @@ body {
 	resize: none;
 }
 
-.btn-default {
-	border-radius: 0px;
-}
-
 .list-group-item {
 	cursor: pointer;
 }
 
 #change-view-button {
 	float: right;
+}
+
+.btn-default .badge {
+	background-color: #558C89;
+}
+
+textarea {
+	resize: none;
+}
+
+.form-group {
+	display: inline-block;
 }

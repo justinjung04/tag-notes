@@ -2,20 +2,19 @@ var React = require('react');
 
 var TagView = require('./tag-view.js');
 var ListView = require('./list-view.js');
-var ChangeViewButton = require('./change-view-button.js');
 
 var AppBody = React.createClass({
-	handleChangeView: function(view) {
-		this.props.changeView(view);
+	handleSetFilterTag: function(filterTag) {
+		this.props.setFilterTag(filterTag);
 	},
 	render: function() {
 		if(this.props.view == 'tag') {
 			return (
-				<TagView changeView={this.handleChangeView} />
+				<TagView setFilterTag={this.handleSetFilterTag} ideas={this.props.ideas} />
 			);
 		} else {
 			return (
-				<ListView />
+				<ListView filterTag={this.props.filterTag} ideas={this.props.ideas} />
 			);
 		}
 	}

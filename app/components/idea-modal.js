@@ -7,7 +7,6 @@ var Input = ReactBootstrap.Input;
 
 var IdeaModal = React.createClass({
 	addIdea: function() {
-		alert("Add Idea");
 		this.props.onRequestHide();
 	},
 	render: function() {
@@ -19,7 +18,7 @@ var IdeaModal = React.createClass({
 					<Input type='text' label='Tags' />
 		        </div>
 		        <div className='modal-footer'>
-		        	<Button bsStyle="warning" onClick={this.addIdea}>Save</Button>
+		        	<Button bsStyle="primary" bsSize='large' onClick={this.addIdea}>Save</Button>
 		        </div>
 		    </Modal>
 		)

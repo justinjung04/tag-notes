@@ -2,12 +2,16 @@ var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
 
 var Button = ReactBootstrap.Button;
+var Badge = ReactBootstrap.Badge;
 
 var TagCard = React.createClass({
+	handleSetFilterTag: function() {
+		this.props.setFilterTag(this.props.tag);
+	},
 	render: function() {
 		return (
-			<Button {...this.props} id={this.props.id} className='tag-name' bsStyle='default' >
-				{this.props.children}
+			<Button onClick={this.handleSetFilterTag} id='tag-card' className={this.props.className} >
+				{this.props.tag}
 			</Button>
 		);
 	}

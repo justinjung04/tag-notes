@@ -2,7 +2,6 @@ var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
 var AppTitle = require('./app-title.js');
 var AddButton = require('./add-button.js');
-var ChangeViewButton = require('./change-view-button.js');
 
 var Button = ReactBootstrap.Button;
 var Grid = ReactBootstrap.Grid;
@@ -11,9 +10,6 @@ var Col = ReactBootstrap.Col;
 var ModalTrigger = ReactBootstrap.ModalTrigger;
 
 var AppHeader = React.createClass({
-	handleChangeView: function() {
-		this.props.changeView();
-	},
 	render: function() {
 		return (
 			<Grid>
@@ -25,9 +21,7 @@ var AppHeader = React.createClass({
                 <Col xs={6} md={4}>
                     <AddButton />
                 </Col>
-                <Col xs={6} md={4}>
-                    <ChangeViewButton view={this.props.view} changeView={this.handleChangeView} />
-                </Col>
+                <Col xs={6} md={4} />
                 </Row>
             </Grid>
 		);

@@ -9,7 +9,7 @@ var AddButton = React.createClass({
     render: function() {
         return (
             <ModalTrigger modal={<IdeaModal />}>
-                <Button id="add-button" bsSize='large' bsStyle='warning'>Spit out an idea!</Button>
+                <Button id="add-button" bsSize='large' bsStyle='success' >Spit out an idea!</Button>
             </ModalTrigger>
         );
     }
