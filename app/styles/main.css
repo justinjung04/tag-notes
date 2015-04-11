@@ -13,6 +13,13 @@ body {
 	margin: 5px;
 }
 
+#tag-card-filtered {
+	color: white;
+	border-radius: 0px;
+	background-color: #D9853B;
+	margin: 5px;
+}
+
 #tag-card:hover {
 	background-color: #74AFAD;
 }

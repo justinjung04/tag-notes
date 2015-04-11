@@ -11,11 +11,25 @@ var Col = ReactBootstrap.Col;
 var ListView = React.createClass({
 	render: function() {
         var rows = [];
+        var tagFound;
         this.props.ideas.forEach(function(idea) {
-        	if(idea.tags.indexOf(this.props.filterTag) == -1) {
-        		return;
-        	}
-        	rows.push(<ListItem body={idea.body} title={idea.title} tags={idea.tags} />)
+            if(this.props.filterTag.length == 0) {
+                tagFound = true;
+            } else if(idea.tags.length < this.props.filterTag.length) {
+                tagFound = false;
+            } else {
+                for(var i=0; i<this.props.filterTag.length; i++) {
+                   if(idea.tags.indexOf(this.props.filterTag[i]) == -1) {
+                        tagFound = false;
+                        break;
+                    } else {
+                        tagFound = true;
+                    }
+                }
+            }
+            if(tagFound) {
+                rows.push(<ListItem body={idea.body} title={idea.title} tags={idea.tags} />);
+            }
         }.bind(this));
 
 		return (

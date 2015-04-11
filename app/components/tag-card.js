@@ -5,12 +5,12 @@ var Button = ReactBootstrap.Button;
 var Badge = ReactBootstrap.Badge;
 
 var TagCard = React.createClass({
-	handleSetFilterTag: function() {
-		this.props.setFilterTag(this.props.tag);
+	handleClickTag: function() {
+		this.props.clickTag(this.props.tag);
 	},
 	render: function() {
 		return (
-			<Button onClick={this.handleSetFilterTag} id='tag-card' className={this.props.className} >
+			<Button onClick={this.handleClickTag} id={this.props.id} className={this.props.className} >
 				{this.props.tag}
 			</Button>
 		);

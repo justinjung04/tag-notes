@@ -6,53 +6,63 @@ var TagCard = require('./tag-card.js');
 var Label = ReactBootstrap.Label;
 
 var TagView = React.createClass({
-	handleSetFilterTag: function(filterTag) {
-		this.props.setFilterTag(filterTag);
+	handleAddFilterTag: function(filterTag) {
+		this.props.addFilterTag(filterTag);
+	},
+	handleRemoveFilterTag: function(filterTag) {
+		this.props.removeFilterTag(filterTag);
 	},
 	render: function() {
-		var tagsArray = [];
+		var tags = [];
+		var filterTags = [];
+
+		this.props.filterTags.forEach(function(filterTag) {
+			filterTags.push(filterTag);
+		});
+
         this.props.ideas.forEach(function(idea) {
-        	var tagNames = idea.tags.split(';');
-			tagNames.forEach(function(tagName) {
-				var i;
+			idea.tags.forEach(function(tag) {
 				var tagFound = false;
-        		for(i=0; i<tagsArray.length; i++) {
-        			if(tagName == tagsArray[i].tag) {
-        				tagsArray[i].count++;
+        		for(var i=0; i<tags.length; i++) {
+        			if(tag == tags[i]) {
         				tagFound = true;
         				return;
         			}
         		}
+        		for(var i=0; i<filterTags.length; i++) {
+        			if(filterTags.indexOf(tag) != -1) {
+        				tagFound = true;
+        			}
+        		}
+        		
         		if(!tagFound) {
-        			tagsArray.push({tag: tagName, count: 1});
+        			tags.push(tag);
         		}
         	});
-		}.bind(this));
-
-		tagsArray.sort(function(a, b){
-		    if(a.tag < b.tag) return -1;
-		    if(a.tag > b.tag) return 1;
-		    return 0;
 		});
 
+		tags.sort();
+
         var tagCards = [];
-		var left = 200;
-		var top = 200;
-		var width, height, fontSize, tagStyle, color;
+        var filterTagViews = [];
 		var temp;
 
-		tagsArray.forEach(function(tagElement) {
-			if(tagElement.tag.substr(0,1) != temp) {
-				temp = tagElement.tag.substr(0,1);
+		tags.forEach(function(tagElement) {
+			if(tagElement.substr(0,1) != temp) {
+				temp = tagElement.substr(0,1);
 				tagCards.push(<h4>{temp}</h4>);
 			}
-    		tagCards.push(<TagCard setFilterTag={this.handleSetFilterTag} tag={tagElement.tag} count={tagElement.count} />);
+    		tagCards.push(<TagCard clickTag={this.handleAddFilterTag} tag={tagElement} id='tag-card' />);
+		}.bind(this));
+
+		filterTags.forEach(function(tagElement) {
+    		filterTagViews.push(<TagCard clickTag={this.handleRemoveFilterTag} tag={tagElement} id='tag-card-filtered' />);
 		}.bind(this));
 
 		return (
 			<div>
 				<h4 id='filter-header'>Filter Tags:</h4>
-				<TagCard setFilterTag={this.handleSetFilterTag} tag={'Tag 5'} count={1} />
+				{filterTagViews}
 				<TagSearch />
 				<br /><br />
 				{tagCards}
