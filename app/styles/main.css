@@ -10,7 +10,7 @@ body {
 	color: white;
 	border-radius: 0px;
 	background-color: #558C89;
-	margin-left: 5px;
+	margin: 5px;
 }
 
 #tag-card:hover {
@@ -44,4 +44,16 @@ textarea {
 
 .form-group {
 	display: inline-block;
+}
+
+.page-header {
+	border-bottom: none;
+}
+
+#filter-header {
+	display: inline-block;	
+}
+
+#tag-search {
+	margin: 5px;
 }

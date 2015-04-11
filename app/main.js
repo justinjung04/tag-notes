@@ -25,7 +25,7 @@ var IDEAS = [
 	{body: 'This is my 12th idea', title: '12th idea', tags: 'Tag 1;Tag 2'},
 	{body: 'This is my 13th idea', title: '13th idea', tags: 'Tag 1;Tag 2'},
 	{body: 'This is my 14th idea', title: '14th idea', tags: 'Tag 1;Tag 3'},
-	{body: 'This is my 15th idea', title: '15th idea', tags: 'Tag 1'}
+	{body: 'This is my 15th idea', title: '15th idea', tags: 'Tag 1;Hello;Hi;This;Is;Really Long;Really Really Long Tag'}
 ];
 
 var Body = React.createClass({

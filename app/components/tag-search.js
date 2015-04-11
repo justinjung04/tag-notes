@@ -25,7 +25,7 @@ var TagSearch = React.createClass({
 	},
 	render: function() {
 		return (
-			<Input type='text' value={this.state.value} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
+			<Input id='tag-search' type='text' value={this.state.value} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
 		);
 	}
 });

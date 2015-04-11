@@ -29,18 +29,32 @@ var TagView = React.createClass({
         	});
 		}.bind(this));
 
+		tagsArray.sort(function(a, b){
+		    if(a.tag < b.tag) return -1;
+		    if(a.tag > b.tag) return 1;
+		    return 0;
+		});
+
         var tagCards = [];
 		var left = 200;
 		var top = 200;
 		var width, height, fontSize, tagStyle, color;
-		
+		var temp;
+
 		tagsArray.forEach(function(tagElement) {
+			if(tagElement.tag.substr(0,1) != temp) {
+				temp = tagElement.tag.substr(0,1);
+				tagCards.push(<h4>{temp}</h4>);
+			}
     		tagCards.push(<TagCard setFilterTag={this.handleSetFilterTag} tag={tagElement.tag} count={tagElement.count} />);
 		}.bind(this));
 
 		return (
 			<div>
-					<TagSearch />
+				<h4 id='filter-header'>Filter Tags:</h4>
+				<TagCard setFilterTag={this.handleSetFilterTag} tag={'Tag 5'} count={1} />
+				<TagSearch />
+				<br /><br />
 				{tagCards}
 			</div>
 		);
