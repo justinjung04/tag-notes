@@ -50,7 +50,7 @@ var TagView = React.createClass({
 		tags.forEach(function(tagElement) {
 			if(tagElement.substr(0,1) != temp) {
 				temp = tagElement.substr(0,1);
-				tagCards.push(<h4>{temp}</h4>);
+				tagCards.push(<h4>{temp.toUpperCase()}</h4>);
 			}
     		tagCards.push(<TagCard clickTag={this.handleAddFilterTag} tag={tagElement} id='tag-card' />);
 		}.bind(this));
@@ -63,7 +63,7 @@ var TagView = React.createClass({
 			<div>
 				<h4 id='filter-header'>Filter Tags:</h4>
 				{filterTagViews}
-				<TagSearch />
+				<TagSearch filterTags={this.props.filterTags} addFilterTag={this.handleAddFilterTag} ideas={this.props.ideas} />
 				<br /><br />
 				{tagCards}
 			</div>

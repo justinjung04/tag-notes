@@ -11,12 +11,12 @@ var Col = ReactBootstrap.Col;
 require('./styles/main.css');
 
 var IDEAS = [
-	{body: 'This is my 9th idea', title: '9th idea', tags: ['Tag 3', 'Tag 4']},
-	{body: 'This is my 10th idea', title: '9th idea', tags: ['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4']},
-	{body: 'This is my 11th idea', title: '11th idea', tags: ['Tag 4']},
-	{body: 'This is my 13th idea', title: '13th idea', tags: ['Tag 1', 'Tag 2']},
-	{body: 'This is my 14th idea', title: '14th idea', tags: ['Tag 1', 'Tag 3']},
-	{body: 'This is my 15th idea', title: '15th idea', tags: ['Tag 1', 'Hello', 'Hi', 'This', 'Is' ,'Really Long', 'Really Really Long Tag']}
+	{body: 'This is my 9th idea', title: '9th idea', tags: ['tag 3', 'tag 4']},
+	{body: 'This is my 10th idea', title: '9th idea', tags: ['tag 1', 'tag 2', 'tag 3', 'tag 4']},
+	{body: 'This is my 11th idea', title: '11th idea', tags: ['tag 4']},
+	{body: 'This is my 13th idea', title: '13th idea', tags: ['tag 1', 'tag 2']},
+	{body: 'This is my 14th idea', title: '14th idea', tags: ['tag 1', 'tag 3']},
+	{body: 'This is my 15th idea', title: '15th idea', tags: ['tag 1', 'hello', 'hi', 'this', 'is' ,'really long', 'really really long tag']}
 ];
 
 var Body = React.createClass({
