@@ -39,6 +39,10 @@ var TagSearch = React.createClass({
 		    	filterTag: '',
 		    	width: 30
 		    });
+	    } else if(keyCode == '8') {
+	    	if(this.refs.input.getValue().length == 0) {
+	    		this.props.removeFilterTag();	
+	    	}
 	    }
 	},
 	handleChange: function() {
@@ -65,7 +69,7 @@ var TagSearch = React.createClass({
 	},
 	render: function() {
 		return (
-			<Input id='tag-search' type='text' value={this.state.filterTag} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
+			<Input type='text' value={this.state.filterTag} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
 		);
 	}
 });

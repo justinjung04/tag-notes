@@ -37,6 +37,10 @@ body {
 	cursor: pointer;
 }
 
+.list-group-item:hover {
+	background-color: #ECECEA;
+}
+
 #change-view-button {
 	float: right;
 }
@@ -49,10 +53,6 @@ textarea {
 	resize: none;
 }
 
-.form-group {
-	display: inline-block;
-}
-
 .page-header {
 	border-bottom: none;
 }
@@ -62,5 +62,6 @@ textarea {
 }
 
 #tag-search {
+	display: inline-block;
 	margin: 5px;
 }

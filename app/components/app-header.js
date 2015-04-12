@@ -10,6 +10,9 @@ var Col = ReactBootstrap.Col;
 var ModalTrigger = ReactBootstrap.ModalTrigger;
 
 var AppHeader = React.createClass({
+	handleAddIdea: function(body, title, tags) {
+		this.props.addIdea(body, title, tags);
+	},
 	render: function() {
 		return (
 			<Grid>
@@ -19,7 +22,7 @@ var AppHeader = React.createClass({
                 <Row>
                 <Col xs={6} md={4} />
                 <Col xs={6} md={4}>
-                    <AddButton />
+                    <AddButton addIdea={this.handleAddIdea} />
                 </Col>
                 <Col xs={6} md={4} />
                 </Row>

@@ -22,7 +22,8 @@ var IDEAS = [
 var Body = React.createClass({
 	getInitialState: function() {
 		return {
-			filterTags: []
+			filterTags: [],
+			ideas: IDEAS
 		};
 	},
 	handleAddFilterTag: function(filterTag) {
@@ -30,27 +31,39 @@ var Body = React.createClass({
 		filterTags.push(filterTag);
 		this.setState({
 			filterTags: filterTags
-		})
+		});
 	},
 	handleRemoveFilterTag: function(filterTag) {
 		var filterTags = this.state.filterTags;
-		var index = filterTags.indexOf(filterTag);
+		var index;
+		if(filterTag == undefined) {
+			index = filterTags.indexOf(filterTag);
+		} else {
+			index = filterTags.length - 1;
+		}
 		filterTags.splice(index, 1);
 		this.setState({
 			filterTags: filterTags
-		})
+		});
+	},
+	handleAddIdea: function(body, title, tags) {
+		var ideas = this.state.ideas;
+		ideas.push({body: body, title: title, tags: [tags]});
+		this.setState({
+			ideas: ideas
+		});
 	},
 	render: function() {
 		return (
 			<Grid>
 				<Row>
-					<AppHeader />
+					<AppHeader addIdea={this.handleAddIdea} />
 				</Row>
 				<br />
 				<br />
 				<Row>
 					<Col xs={9} md={6}>
-						<TagView addFilterTag={this.handleAddFilterTag} removeFilterTag={this.handleRemoveFilterTag} filterTags={this.state.filterTags} ideas={IDEAS} />
+						<TagView addFilterTag={this.handleAddFilterTag} removeFilterTag={this.handleRemoveFilterTag} filterTags={this.state.filterTags} ideas={this.state.ideas} />
 					</Col>
 	                <Col xs={9} md={6}>
 	                    <ListView filterTag={this.state.filterTags} ideas={IDEAS} />

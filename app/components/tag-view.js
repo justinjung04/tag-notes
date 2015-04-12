@@ -63,7 +63,9 @@ var TagView = React.createClass({
 			<div>
 				<h4 id='filter-header'>Filter Tags:</h4>
 				{filterTagViews}
-				<TagSearch filterTags={this.props.filterTags} addFilterTag={this.handleAddFilterTag} ideas={this.props.ideas} />
+				<div id='tag-search'>
+					<TagSearch filterTags={this.props.filterTags} addFilterTag={this.handleAddFilterTag} removeFilterTag={this.handleRemoveFilterTag} ideas={this.props.ideas} />
+				</div>
 				<br /><br />
 				{tagCards}
 			</div>
