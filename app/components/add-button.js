@@ -11,7 +11,7 @@ var AddButton = React.createClass({
 	},
     render: function() {
         return (
-            <ModalTrigger modal={<IdeaPopup addIdea={this.handleAddIdea} />}>
+            <ModalTrigger modal={<IdeaPopup id='idea-popup-add' addIdea={this.handleAddIdea} />}>
                 <Button id="add-button" bsSize='large' bsStyle='success' >Spit out an idea!</Button>
             </ModalTrigger>
         );

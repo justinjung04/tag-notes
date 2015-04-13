@@ -3,7 +3,10 @@ var ReactBootstrap = require('react-bootstrap');
 var TagLabel = require('./tag-label.js');
 
 var Input = ReactBootstrap.Input;
-var Label = ReactBootstrap.Label;	
+var Label = ReactBootstrap.Label;
+var Button = ReactBootstrap.Button;	
+var ListGroup = ReactBootstrap.ListGroup;
+var ListGroupItem = ReactBootstrap.ListGroupItem;
 
 var TagSearch = React.createClass({
 	getInitialState: function() {
@@ -69,11 +72,17 @@ var TagSearch = React.createClass({
 	},
 	render: function() {
 		return (
-			<Input type='text' value={this.state.filterTag} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
+			<div>
+				<Input type='text' value={this.state.filterTag} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
+				<div id='suggestion'>
+					<ListGroup id='suggestion'>
+						<ListGroupItem id='selected'>hello</ListGroupItem>
+						<ListGroupItem>hi</ListGroupItem>
+					</ListGroup>
+				</div>
+			</div>
 		);
 	}
 });
-
-//<Input type='text' value={this.state.value} onChange={this.handleChange} ref='input' style={{width:this.state.width}}/>
 
 module.exports = TagSearch;

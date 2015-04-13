@@ -9,9 +9,9 @@ var Row = ReactBootstrap.Row;
 var Col = ReactBootstrap.Col;
 
 var ListView = React.createClass({
-    // handleUpdateIdea: function(body, title, tags) {
-        
-    // }
+    handleAddIdea: function(body, title, tags) {
+        this.props.addIdea(body, title, tags);
+    },
 	render: function() {
         var rows = [];
         var tagFound;
@@ -31,7 +31,7 @@ var ListView = React.createClass({
                 }
             }
             if(tagFound) {
-                rows.push(<ListItem updateIdea={this.handleUpdateIdea} body={idea.body} title={idea.title} tags={idea.tags} />);
+                rows.push(<ListItem addIdea={this.handleAddIdea} updateIdea={this.handleUpdateIdea} body={idea.body} title={idea.title} tags={idea.tags} />);
             }
         }.bind(this));
 

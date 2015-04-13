@@ -66,7 +66,7 @@ var Body = React.createClass({
 						<TagView addFilterTag={this.handleAddFilterTag} removeFilterTag={this.handleRemoveFilterTag} filterTags={this.state.filterTags} ideas={this.state.ideas} />
 					</Col>
 	                <Col xs={9} md={6}>
-	                    <ListView filterTag={this.state.filterTags} ideas={IDEAS} />
+	                    <ListView addIdea={this.handleAddIdea} filterTag={this.state.filterTags} ideas={IDEAS} />
 	                </Col>
 				</Row>
 			</Grid>

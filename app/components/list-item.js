@@ -6,6 +6,9 @@ var ListGroupItem = ReactBootstrap.ListGroupItem;
 var ModalTrigger = ReactBootstrap.ModalTrigger;
 
 var ListItem = React.createClass({
+	handleAddIdea: function(body, title, tags) {
+		this.props.addIdea(body, title, tags);
+	},
 	handleUpdateIdea: function(body, title, tags) {
 		this.props.updateIdea(body, title, tags);
 	},
@@ -20,7 +23,7 @@ var ListItem = React.createClass({
 		}
 
 		return (
-			<ModalTrigger modal={<IdeaPopup updateIdea={this.handleUpdateIdea} body={this.props.body} ideaTitle={this.props.title} tags={this.props.tags} />}>
+			<ModalTrigger modal={<IdeaPopup id='idea-popup-update' addIdea={this.handleAddIdea} updateIdea={this.handleUpdateIdea} body={this.props.body} ideaTitle={this.props.title} tags={this.props.tags} />}>
                 <ListGroupItem>
 					<b>{this.props.title}</b> ({tagString})
 				</ListGroupItem>
