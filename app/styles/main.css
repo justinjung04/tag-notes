@@ -69,6 +69,7 @@ textarea {
 #suggestion {
 	display: block;
 	position: absolute;
+	margin-left: 5px;
 }
 
 #tag-search > div > .form-group {

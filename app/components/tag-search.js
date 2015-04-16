@@ -1,57 +1,74 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
-var TagLabel = require('./tag-label.js');
-
+var TagSuggestion = require('./tag-suggestion.js');
 var Input = ReactBootstrap.Input;
-var Label = ReactBootstrap.Label;
-var Button = ReactBootstrap.Button;	
-var ListGroup = ReactBootstrap.ListGroup;
-var ListGroupItem = ReactBootstrap.ListGroupItem;
 
 var TagSearch = React.createClass({
 	getInitialState: function() {
 		return {
-			filterTag: '',
-			width: 30
+			searchTag: '',
+			suggestionTags: [],
+			width: 30,
+			count: 0
 		};
 	},
 	handleKeydown: function(e) {
 		if (!e) e = window.event;
 	    var keyCode = e.keyCode || e.which;
-	    if (keyCode == '13'){
-	    	var tags = [];
-	    	var filterTag = this.refs.input.getValue().toString().toLowerCase();
-	    	this.props.ideas.forEach(function(idea) {
-				idea.tags.forEach(function(tag) {
-					var tagFound = false;
-	        		for(var i=0; i<tags.length; i++) {
-	        			if(tag == tags[i]) {
-	        				tagFound = true;
-	        				return;
-	        			}
-	        		}	        		
-	        		if(!tagFound) {
-	        			tags.push(tag);
-	        		}
-	        	});
-			});
-	    	if((tags.indexOf(filterTag) != -1) && (this.props.filterTags.indexOf(filterTag) == -1)) {
-	    		this.props.addFilterTag(filterTag);
+	    if (keyCode == '13') {
+	    	if(this.state.suggestionTags.length > 0) {
+	    		this.props.addFilterTag(this.state.suggestionTags[this.state.count]);
 	    	}
 	    	this.setState({
-		    	filterTag: '',
-		    	width: 30
+		    	searchTag: '',
+		    	suggestionTags: [],
+		    	width: 30,
+		    	count: 0
 		    });
 	    } else if(keyCode == '8') {
 	    	if(this.refs.input.getValue().length == 0) {
 	    		this.props.removeFilterTag();	
 	    	}
+	    } else if(keyCode == '38') {
+	    	if(this.state.count > 0) {
+	    		var count = this.state.count - 1;
+	    		this.setState({
+	    			count: count
+	    		});
+	    	}
+	    	e.preventDefault();
+	    } else if(keyCode == '40') {
+	    	if(this.state.count < this.state.suggestionTags.length - 1) {
+		    	var count = this.state.count + 1;
+	    		this.setState({
+	    			count: count
+	    		});
+	    	}
+	    	e.preventDefault();
 	    }
 	},
 	handleChange: function() {
+		var searchTag = this.refs.input.getValue().toString();
+		var canvas = document.createElement('canvas');
+		var ctx = canvas.getContext("2d");
+		ctx.font = "14px Arial";        
+		var inputWidth = ctx.measureText(searchTag).width;
 		this.setState({
-	    	filterTag: this.refs.input.getValue()
-	    });
+			searchTag: searchTag,
+			suggestionTags: this.getSuggestionTags(searchTag),
+			width: 30 + inputWidth
+		});
+	},
+	getSuggestionTags: function(searchTag) {
+		var suggestionTags = [];
+		if(searchTag.length > 0) {
+			this.props.tags.forEach(function(tag) {
+				if((tag.indexOf(searchTag) != -1) && (this.props.filterTags.indexOf(tag) == -1)) {
+					suggestionTags.push(tag);
+				}
+			}.bind(this));	
+		}
+		return suggestionTags;
 	},
 	componentWillMount: function() {
 		document.addEventListener('keydown', this.handleKeydown, false);
@@ -59,27 +76,11 @@ var TagSearch = React.createClass({
 	componentWillUnmount: function() {
 		document.removeEventListener('keydown', this.handleKeydown, false);
 	},
-	handleChange: function() {
-		var userInput = this.refs.input.getValue().toString();
-		var canvas = document.createElement('canvas');
-		var ctx = canvas.getContext("2d");
-		ctx.font = "14px Arial";        
-		var inputWidth = ctx.measureText(userInput).width;
-		this.setState({
-			filterTag: userInput,
-			width: 30 + inputWidth
-		});
-	},
 	render: function() {
 		return (
 			<div>
-				<Input type='text' value={this.state.filterTag} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
-				<div id='suggestion'>
-					<ListGroup id='suggestion'>
-						<ListGroupItem id='selected'>hello</ListGroupItem>
-						<ListGroupItem>hi</ListGroupItem>
-					</ListGroup>
-				</div>
+				<Input type='text' value={this.state.searchTag} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
+				<TagSuggestion suggestionTags={this.state.suggestionTags} searchTag={this.state.searchTag} count={this.state.count} />
 			</div>
 		);
 	}

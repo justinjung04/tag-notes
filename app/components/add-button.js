@@ -1,7 +1,6 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
 var IdeaPopup = require('./idea-popup.js');
-
 var Button = ReactBootstrap.Button;
 var ModalTrigger = ReactBootstrap.ModalTrigger;
 

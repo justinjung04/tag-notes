@@ -4,7 +4,7 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 var Badge = ReactBootstrap.Badge;
 
-var TagCard = React.createClass({
+var TagButton = React.createClass({
 	handleClickTag: function() {
 		this.props.clickTag(this.props.tag);
 	},
@@ -17,4 +17,4 @@ var TagCard = React.createClass({
 	}
 });
 
-module.exports = TagCard;
+module.exports = TagButton;
