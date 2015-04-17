@@ -27,6 +27,13 @@ var IdeaPopup = React.createClass({
 		this.props.addIdea(this.state.body, this.state.title, this.state.tags);
 		this.props.onRequestHide();
 	},
+	handleAddTag: function(tag) {
+		var tags = this.state.tags;
+		tags.push(tag);
+		this.setState({
+			tags: tags
+		});
+	},
 	handleChange: function() {
 		this.setState({
 	    	body: this.refs.body.getValue(),

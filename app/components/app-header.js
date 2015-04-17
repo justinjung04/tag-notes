@@ -10,8 +10,8 @@ var Col = ReactBootstrap.Col;
 var ModalTrigger = ReactBootstrap.ModalTrigger;
 
 var AppHeader = React.createClass({
-	handleAddIdea: function(body, title, tags) {
-		this.props.addIdea(body, title, tags);
+	handleAddIdea: function(header, tags, body) {
+		this.props.addIdea(header, tags, body);
 	},
 	render: function() {
 		return (
@@ -22,7 +22,7 @@ var AppHeader = React.createClass({
                 <Row>
                 <Col xs={6} md={4} />
                 <Col xs={6} md={4}>
-                    <AddButton addIdea={this.handleAddIdea} />
+                    <AddButton addIdea={this.handleAddIdea} tags={this.props.tags} />
                 </Col>
                 <Col xs={6} md={4} />
                 </Row>

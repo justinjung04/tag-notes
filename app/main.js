@@ -66,9 +66,9 @@ var Body = React.createClass({
 			filterTags: filterTags
 		});
 	},
-	handleAddIdea: function(body, title, tags) {
+	handleAddIdea: function(header, tags, body) {
 		var ideas = this.state.ideas;
-		ideas.push({body: body, title: title, tags: [tags]});
+		ideas.push({body: body, title: header, tags: tags});
 		this.setState({
 			ideas: ideas,
 			tags: this.getTags(ideas)
@@ -78,7 +78,7 @@ var Body = React.createClass({
 		return (
 			<Grid>
 				<Row>
-					<AppHeader addIdea={this.handleAddIdea} />
+					<AppHeader addIdea={this.handleAddIdea} tags={this.state.tags} />
 				</Row>
 				<br />
 				<br />

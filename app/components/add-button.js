@@ -1,16 +1,16 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
-var IdeaPopup = require('./idea-popup.js');
+var PopupNew = require('./popup-new.js');
 var Button = ReactBootstrap.Button;
 var ModalTrigger = ReactBootstrap.ModalTrigger;
 
 var AddButton = React.createClass({
-	handleAddIdea: function(body, title, tags) {
-		this.props.addIdea(body, title, tags);
+	handleAddIdea: function(header, tags, body) {
+		this.props.addIdea(header, tags, body);
 	},
     render: function() {
         return (
-            <ModalTrigger modal={<IdeaPopup id='idea-popup-add' addIdea={this.handleAddIdea} />}>
+            <ModalTrigger modal={<PopupNew addIdea={this.handleAddIdea} tags={this.props.tags} />}>
                 <Button id="add-button" bsSize='large' bsStyle='success' >Spit out an idea!</Button>
             </ModalTrigger>
         );

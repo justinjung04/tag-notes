@@ -14,7 +14,7 @@ var TagSearchAbstract = React.createClass({
 		if (!e) e = window.event;
 	    var keyCode = e.keyCode || e.which;
 	    if (keyCode == '13') {
-	    	this.props.enterPressed();
+	    	this.props.enterPressed(this.refs.input.getValue());
 	    	this.setState({
 		    	searchTag: '',
 		    	width: 30
