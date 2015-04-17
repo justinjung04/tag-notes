@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
-var TagSearch = require('./tag-search.js');
+var TagSearchMain = require('./tag-search-main.js');
 var TagButton = require('./tag-button.js');
 
 var TagView = React.createClass({
@@ -34,7 +34,7 @@ var TagView = React.createClass({
 				<h4 id='filter-header'>Filter Tags:</h4>
 				{filterTagButtons}
 				<div id='tag-search'>
-					<TagSearch {...this.props} />
+					<TagSearchMain {...this.props} />
 				</div>
 				<br /><br />
 				{tagButtons}

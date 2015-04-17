@@ -1,6 +1,8 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
-
+var TagButton = require('./tag-button.js');
+var TagSuggestion = require('./tag-suggestion.js');
+var TagSearchMain = require('./tag-search-main.js');
 var Modal = ReactBootstrap.Modal;
 var Button = ReactBootstrap.Button;
 var Input = ReactBootstrap.Input;
@@ -8,18 +10,10 @@ var Input = ReactBootstrap.Input;
 var IdeaPopup = React.createClass({
 	getInitialState: function() {
 		if(this.props.id == 'idea-popup-update') {
-			var tagString = '';
-			for(var i=0; i<this.props.tags.length; i++) {
-				if(i == 0) {
-					tagString += this.props.tags[i];
-				} else {
-					tagString += ', ' + this.props.tags[i];
-				}
-			}
 			return {
 				body: this.props.body,
 				title: this.props.ideaTitle,
-				tags: tagString
+				tags: this.props.tags
 			};
 		} else {
 			return {
@@ -36,23 +30,31 @@ var IdeaPopup = React.createClass({
 	handleChange: function() {
 		this.setState({
 	    	body: this.refs.body.getValue(),
-	    	title: this.refs.title.getValue(),
-	    	tags: this.refs.tags.getValue()
+	    	title: this.refs.title.getValue()
 	    });
 	},
 	render: function() {
+		var tagButtons = [];
+		this.props.tags.forEach(function(tag) {
+			tagButtons.push(<TagButton tag={tag} id='tag-card' />);
+		}.bind(this));
+
 		return (
 			<Modal {...this.props} id="idea-modal" animation={false}>
 		        <div className='modal-body'>
+		        	<Input ref='title' onChange={this.handleChange} type='text' label='Title' value={this.state.title} />
+					<h5>Tags</h5>
+					{tagButtons}
+					<div id='tag-search'>
+						<TagSearch {...this.props} id='tag-search-popup' />
+					</div>
 					<Input ref='body' onChange={this.handleChange} id="idea-body" type='textarea' label='Body' rows="10" value={this.state.body} />
-					<Input ref='title' onChange={this.handleChange} type='text' label='Title' value={this.state.title} />
-					<Input ref='tags' onChange={this.handleChange} type='text' label='Tags' value={this.state.tags} />
 		        </div>
 		        <div className='modal-footer'>
 		        	<Button bsStyle="success" onClick={this.handleAddIdea}>Save</Button>
 		        </div>
 		    </Modal>
-		)
+		);
 	}
 });
 

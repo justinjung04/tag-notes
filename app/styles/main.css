@@ -87,3 +87,8 @@ textarea {
 #selected {
 	background-color: #ECECEA;
 }
+
+h5 {
+	font-weight: bold;
+	margin-bottom: 0px;
+}

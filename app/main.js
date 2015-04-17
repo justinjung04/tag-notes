@@ -11,12 +11,12 @@ var Col = ReactBootstrap.Col;
 require('./styles/main.css');
 
 var IDEAS = [
-	{body: 'This is my 9th idea', title: '9th idea', tags: ['tag 3', 'tag 4']},
-	{body: 'This is my 10th idea', title: '9th idea', tags: ['tag 1', 'tag 2', 'tag 3', 'tag 4']},
-	{body: 'This is my 11th idea', title: '11th idea', tags: ['tag 4']},
-	{body: 'This is my 13th idea', title: '13th idea', tags: ['tag 1', 'tag 2']},
-	{body: 'This is my 14th idea', title: '14th idea', tags: ['tag 1', 'tag 3']},
-	{body: 'This is my 15th idea', title: '15th idea', tags: ['tag 1', 'hello', 'hi', 'this', 'is' ,'really long', 'really really long tag']}
+	{id: 1, body: 'This is my 9th idea', title: '9th idea', tags: ['tag 3', 'tag 4']},
+	{id: 2, body: 'This is my 10th idea', title: '9th idea', tags: ['tag 1', 'tag 2', 'tag 3', 'tag 4']},
+	{id: 3, body: 'This is my 11th idea', title: '11th idea', tags: ['tag 4']},
+	{id: 4, body: 'This is my 13th idea', title: '13th idea', tags: ['tag 1', 'tag 2']},
+	{id: 5, body: 'This is my 14th idea', title: '14th idea', tags: ['tag 1', 'tag 3']},
+	{id: 6, body: 'This is my 15th idea', title: '15th idea', tags: ['tag 1', 'hello', 'hi', 'this', 'is' ,'really long', 'really really long tag']}
 ];
 
 var Body = React.createClass({
@@ -57,9 +57,9 @@ var Body = React.createClass({
 		var filterTags = this.state.filterTags;
 		var index;
 		if(filterTag == undefined) {
-			index = filterTags.indexOf(filterTag);
-		} else {
 			index = filterTags.length - 1;
+		} else {
+			index = filterTags.indexOf(filterTag);
 		}
 		filterTags.splice(index, 1);
 		this.setState({
@@ -87,7 +87,7 @@ var Body = React.createClass({
 						<TagView ideas={this.state.ideas} tags={this.state.tags} filterTags={this.state.filterTags} addFilterTag={this.handleAddFilterTag} removeFilterTag={this.handleRemoveFilterTag} />
 					</Col>
 	                <Col xs={9} md={6}>
-	                    <ListView addIdea={this.handleAddIdea} filterTag={this.state.filterTags} ideas={IDEAS} />
+	                    <ListView addIdea={this.handleAddIdea} filterTag={this.state.filterTags} ideas={IDEAS} tags={this.state.tags} />
 	                </Col>
 				</Row>
 			</Grid>

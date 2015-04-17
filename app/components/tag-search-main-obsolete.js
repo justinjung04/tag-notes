@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
+var TagSearchAbstract = require('./tag-search-main.js');
 var TagSuggestion = require('./tag-suggestion.js');
 var Input = ReactBootstrap.Input;
 
@@ -62,11 +63,19 @@ var TagSearch = React.createClass({
 	getSuggestionTags: function(searchTag) {
 		var suggestionTags = [];
 		if(searchTag.length > 0) {
-			this.props.tags.forEach(function(tag) {
-				if((tag.indexOf(searchTag) != -1) && (this.props.filterTags.indexOf(tag) == -1)) {
-					suggestionTags.push(tag);
-				}
-			}.bind(this));	
+			if(this.props.id=='tag-search-popup') {
+				this.props.allTags.forEach(function(tag) {
+					if((tag.indexOf(searchTag) != -1) && (this.props.tags.indexOf(tag) == -1)) {
+						suggestionTags.push(tag);
+					}
+				}.bind(this));
+			} else if(this.props.id=='tag-search-main') {
+				this.props.tags.forEach(function(tag) {
+					if((tag.indexOf(searchTag) != -1) && (this.props.filterTags.indexOf(tag) == -1)) {
+						suggestionTags.push(tag);
+					}
+				}.bind(this));
+			}
 		}
 		return suggestionTags;
 	},

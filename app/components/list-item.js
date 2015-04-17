@@ -23,7 +23,7 @@ var ListItem = React.createClass({
 		}
 
 		return (
-			<ModalTrigger modal={<IdeaPopup id='idea-popup-update' addIdea={this.handleAddIdea} updateIdea={this.handleUpdateIdea} body={this.props.body} ideaTitle={this.props.title} tags={this.props.tags} />}>
+			<ModalTrigger modal={<IdeaPopup id='idea-popup-update' addIdea={this.handleAddIdea} updateIdea={this.handleUpdateIdea} allTags={this.props.allTags} body={this.props.body} ideaTitle={this.props.title} tags={this.props.tags} />}>
                 <ListGroupItem>
 					<b>{this.props.title}</b> ({tagString})
 				</ListGroupItem>

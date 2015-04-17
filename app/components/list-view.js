@@ -31,7 +31,7 @@ var ListView = React.createClass({
                 }
             }
             if(tagFound) {
-                rows.push(<ListItem addIdea={this.handleAddIdea} updateIdea={this.handleUpdateIdea} body={idea.body} title={idea.title} tags={idea.tags} />);
+                rows.push(<ListItem addIdea={this.handleAddIdea} updateIdea={this.handleUpdateIdea} allTags={this.props.tags} body={idea.body} title={idea.title} tags={idea.tags} />);
             }
         }.bind(this));
 
