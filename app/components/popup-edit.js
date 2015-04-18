@@ -3,24 +3,16 @@ var ReactBootstrap = require('react-bootstrap');
 var PopupAbstract = require('./popup-abstract.js');
 var Button = ReactBootstrap.Button;
 
-var PopupNew = React.createClass({
+var PopupEdit = React.createClass({
 	getInitialState: function() {
 		return {
-			header: '',
-			tags: [],
-			body: ''
+			header: this.props.header,
+			tags: this.props.tags,
+			body: this.props.body
 		};
 	},
-	handleAddIdea: function() {
-		if((this.state.header.length > 0) || (this.state.tags.length > 0) || (this.state.body.length > 0)) {
-			var header;
-			if(this.state.header == '') {
-				header = '(Untitled)';
-			} else {
-				header = this.state.header;
-			}
-			this.props.addIdea(header, this.state.tags, this.state.body);	
-		}
+	handleUpdateIdea: function(header, tags, body) {
+		this.props.updateIdea(this.state.header, this.state.tags, this.state.body);
 		this.props.onRequestHide();
 	},
 	handleAddTag: function(tag) {
@@ -50,7 +42,8 @@ var PopupNew = React.createClass({
 	},
 	render: function() {
 		var buttons = [];
-		buttons.push(<Button bsStyle="success" onClick={this.handleAddIdea}>Add</Button>);
+		buttons.push(<Button bsStyle="success" onClick={this.handleUpdateIdea}>Save</Button>);
+		buttons.push(<Button bsStyle="success" style={{float:'left'}} onClick={this.handleDeleteIdea}>Delete</Button>);
 
 		return (
 			<PopupAbstract {...this.props} addTag={this.handleAddTag} removeTag={this.handleRemoveTag} changeHeader={this.handleChangeHeader} 
@@ -61,4 +54,4 @@ var PopupNew = React.createClass({
 	}
 });
 
-module.exports = PopupNew;
+module.exports = PopupEdit;

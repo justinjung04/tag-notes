@@ -1,6 +1,5 @@
 var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
-
 var AppHeader = require('./components/app-header.js');
 var TagView = require('./components/tag-view.js');
 var ListView = require('./components/list-view.js');
@@ -11,12 +10,12 @@ var Col = ReactBootstrap.Col;
 require('./styles/main.css');
 
 var IDEAS = [
-	{id: 1, body: 'This is my 9th idea', title: '9th idea', tags: ['tag 3', 'tag 4']},
-	{id: 2, body: 'This is my 10th idea', title: '9th idea', tags: ['tag 1', 'tag 2', 'tag 3', 'tag 4']},
-	{id: 3, body: 'This is my 11th idea', title: '11th idea', tags: ['tag 4']},
-	{id: 4, body: 'This is my 13th idea', title: '13th idea', tags: ['tag 1', 'tag 2']},
-	{id: 5, body: 'This is my 14th idea', title: '14th idea', tags: ['tag 1', 'tag 3']},
-	{id: 6, body: 'This is my 15th idea', title: '15th idea', tags: ['tag 1', 'hello', 'hi', 'this', 'is' ,'really long', 'really really long tag']}
+	{id: 0, body: 'This is my 9th idea', header: '9th idea', tags: ['tag 3', 'tag 4']},
+	{id: 1, body: 'This is my 10th idea', header: '9th idea', tags: ['tag 1', 'tag 2', 'tag 3', 'tag 4']},
+	{id: 2, body: 'This is my 11th idea', header: '11th idea', tags: ['tag 4']},
+	{id: 3, body: 'This is my 13th idea', header: '13th idea', tags: ['tag 1', 'tag 2']},
+	{id: 4, body: 'This is my 14th idea', header: '14th idea', tags: ['tag 1', 'tag 3']},
+	{id: 5, body: 'This is my 15th idea', header: '15th idea', tags: ['tag 1', 'hello', 'hi', 'this', 'is' ,'really long', 'really really long tag']}
 ];
 
 var Body = React.createClass({
@@ -24,7 +23,8 @@ var Body = React.createClass({
 		return {
 			ideas: IDEAS,
 			tags: this.getTags(IDEAS),
-			filterTags: []
+			filterTags: [],
+			nextId: 6
 		};
 	},
 	getTags: function(ideas) {
@@ -68,7 +68,23 @@ var Body = React.createClass({
 	},
 	handleAddIdea: function(header, tags, body) {
 		var ideas = this.state.ideas;
-		ideas.push({body: body, title: header, tags: tags});
+		ideas.push({body: body, header: header, tags: tags});
+		var nextId = this.state.nextId + 1;
+		this.setState({
+			nextId: nextId,
+			ideas: ideas,
+			tags: this.getTags(ideas)
+		});
+	},
+	handleUpdateIdea: function(id, header, tags, body) {
+		var ideas = this.state.ideas;
+		ideas.forEach(function(idea) {
+			if(idea.id == id) {
+				idea.header = header;
+				idea.tags = tags;
+				idea.body = body;
+			}
+		});
 		this.setState({
 			ideas: ideas,
 			tags: this.getTags(ideas)
@@ -87,7 +103,7 @@ var Body = React.createClass({
 						<TagView ideas={this.state.ideas} tags={this.state.tags} filterTags={this.state.filterTags} addFilterTag={this.handleAddFilterTag} removeFilterTag={this.handleRemoveFilterTag} />
 					</Col>
 	                <Col xs={9} md={6}>
-	                    <ListView addIdea={this.handleAddIdea} filterTag={this.state.filterTags} ideas={IDEAS} tags={this.state.tags} />
+	                    <ListView updateIdea={this.handleUpdateIdea} filterTag={this.state.filterTags} ideas={this.state.ideas} tags={this.state.tags} />
 	                </Col>
 				</Row>
 			</Grid>

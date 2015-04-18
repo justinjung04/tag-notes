@@ -43,16 +43,10 @@ var TagSearchAbstract = React.createClass({
 			width: 30 + inputWidth
 		});
 	},
-	componentWillMount: function() {
-		document.addEventListener('keydown', this.handleKeydown, false);
-	},
-	componentWillUnmount: function() {
-		document.removeEventListener('keydown', this.handleKeydown, false);
-	},
 	render: function() {
 		return (
 			<div>
-				<Input type='text' value={this.state.searchTag} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
+				<Input type='text' value={this.state.searchTag} onKeyDown={this.handleKeydown} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
 				<TagSuggestion suggestionTags={this.props.suggestionTags} searchTag={this.state.searchTag} count={this.props.count} />
 			</div>
 		);

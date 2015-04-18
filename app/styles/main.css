@@ -92,3 +92,11 @@ h5 {
 	font-weight: bold;
 	margin-bottom: 0px;
 }
+
+.label-default {
+	border: 1px solid #D9853B;
+	background-color: transparent;
+	font-weight: normal;
+	color: #D9853B;
+	margin: 5px;
+}

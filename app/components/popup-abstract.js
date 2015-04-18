@@ -3,14 +3,9 @@ var ReactBootstrap = require('react-bootstrap');
 var TagButton = require('./tag-button.js');
 var TagSearchPopup = require('./tag-search-popup.js');
 var Modal = ReactBootstrap.Modal;
-var Button = ReactBootstrap.Button;
 var Input = ReactBootstrap.Input;
 
 var PopupAbstract = React.createClass({
-	handleAddIdea: function() {
-		this.props.addIdea();
-		this.props.onRequestHide();
-	},
 	handleChangeHeader: function() {
 		this.props.changeHeader(this.refs.header.getValue());
 	},
@@ -41,7 +36,7 @@ var PopupAbstract = React.createClass({
 					<Input ref='body' onChange={this.handleChangeBody} id="idea-body" type='textarea' label='Body' rows="10" value={this.props.body} />
 		        </div>
 		        <div className='modal-footer'>
-		        	<Button bsStyle="success" onClick={this.handleAddIdea}>Add</Button>
+		        	{this.props.buttons}
 		        </div>
 		    </Modal>
 		);
