@@ -68,13 +68,14 @@ var Body = React.createClass({
 	},
 	handleAddIdea: function(header, tags, body) {
 		var ideas = this.state.ideas;
-		ideas.push({body: body, header: header, tags: tags});
-		var nextId = this.state.nextId + 1;
+		var nextId = this.state.nextId;
+		ideas.push({id: nextId, body: body, header: header, tags: tags});
 		this.setState({
-			nextId: nextId,
+			nextId: nextId + 1,
 			ideas: ideas,
 			tags: this.getTags(ideas)
 		});
+		console.log(ideas);
 	},
 	handleUpdateIdea: function(id, header, tags, body) {
 		var ideas = this.state.ideas;
