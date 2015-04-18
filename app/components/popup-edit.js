@@ -15,6 +15,10 @@ var PopupEdit = React.createClass({
 		this.props.updateIdea(this.state.header, this.state.tags, this.state.body);
 		this.props.onRequestHide();
 	},
+	handleDeleteIdea: function() {
+		this.props.deleteIdea();
+		this.props.onRequestHide();
+	},
 	handleAddTag: function(tag) {
 		var tags = this.state.tags;
 		tags.push(tag);

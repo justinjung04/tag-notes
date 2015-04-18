@@ -91,6 +91,21 @@ var Body = React.createClass({
 			tags: this.getTags(ideas)
 		});
 	},
+	handleDeleteIdea: function(id) {
+		var ideas = this.state.ideas;
+		var index;
+		for(var i=0; i<ideas.length; i++) {
+			if(ideas[i].id == id) {
+				index = i;
+				break;
+			}
+		}
+		ideas.splice(index, 1);
+		this.setState({
+			ideas: ideas,
+			tags: this.getTags(ideas)
+		})
+	},
 	render: function() {
 		return (
 			<Grid>
@@ -104,7 +119,7 @@ var Body = React.createClass({
 						<TagView ideas={this.state.ideas} tags={this.state.tags} filterTags={this.state.filterTags} addFilterTag={this.handleAddFilterTag} removeFilterTag={this.handleRemoveFilterTag} />
 					</Col>
 	                <Col xs={9} md={6}>
-	                    <ListView updateIdea={this.handleUpdateIdea} filterTag={this.state.filterTags} ideas={this.state.ideas} tags={this.state.tags} />
+	                    <ListView updateIdea={this.handleUpdateIdea} deleteIdea={this.handleDeleteIdea} filterTag={this.state.filterTags} ideas={this.state.ideas} tags={this.state.tags} />
 	                </Col>
 				</Row>
 			</Grid>

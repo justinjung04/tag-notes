@@ -10,6 +10,9 @@ var ListItem = React.createClass({
 	handleUpdateIdea: function(header, tags, body) {
 		this.props.updateIdea(this.props.id, header, tags, body);
 	},
+	handleDeleteIdea: function() {
+		this.props.deleteIdea(this.props.id);
+	},
 	render: function() {
 		var tagLabels = [];
 		this.props.tags.forEach(function(tag) {
@@ -17,7 +20,7 @@ var ListItem = React.createClass({
 		}.bind(this));
 
 		return (
-			<ModalTrigger modal={<PopupEdit updateIdea={this.handleUpdateIdea} header={this.props.header} tags={this.props.tags} body={this.props.body} />}>
+			<ModalTrigger modal={<PopupEdit updateIdea={this.handleUpdateIdea} deleteIdea={this.handleDeleteIdea} header={this.props.header} tags={this.props.tags} body={this.props.body} />}>
                 <ListGroupItem>
 					<b>{this.props.header}</b> {tagLabels}
 				</ListGroupItem>

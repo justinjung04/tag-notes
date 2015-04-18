@@ -9,16 +9,11 @@ var Row = ReactBootstrap.Row;
 var Col = ReactBootstrap.Col;
 
 var ListView = React.createClass({
-    getInitialState: function() {
-        return ({
-            nextId: this.props.nextId
-        });
-    },
     handleUpdateIdea: function(id, header, tags, body) {
-        this.setState({
-            nextId: 10
-        });
         this.props.updateIdea(id, header, tags, body);
+    },
+    handleDeleteIdea: function(id) {
+        this.props.deleteIdea(id);
     },
 	render: function() {
         var rows = [];
@@ -39,7 +34,7 @@ var ListView = React.createClass({
                 }
             }
             if(tagFound) {
-                rows.push(<ListItem updateIdea={this.handleUpdateIdea} id={idea.id} header={idea.header} tags={idea.tags} body={idea.body} />);
+                rows.push(<ListItem updateIdea={this.handleUpdateIdea} deleteIdea={this.handleDeleteIdea} id={idea.id} header={idea.header} tags={idea.tags} body={idea.body} />);
             }
         }.bind(this));
 
