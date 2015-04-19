@@ -50,11 +50,19 @@ var TagSearchMain = React.createClass({
 			suggestionTags: suggestionTags
 		})
 	},
+	handleSuggestionClick: function(tag) {
+		this.props.addFilterTag(tag);
+    	this.setState({
+	    	suggestionTags: [],
+	    	count: 0
+	    });
+	},
 	render: function() {
 		return (
 			<TagSearchAbstract enterPressed={this.handleEnterPressed} backSpacePressed={this.handleBackSpacePressed} 
 							upArrowPressed={this.handleUpArrowPressed} downArrowPressed={this.handleDownArrowPressed} 
-							getSuggestionTags={this.getSuggestionTags} suggestionTags={this.state.suggestionTags} count={this.state.count} />
+							getSuggestionTags={this.getSuggestionTags} suggestionTags={this.state.suggestionTags} 
+							suggestionClick={this.handleSuggestionClick} count={this.state.count} />
 		);
 	}
 });

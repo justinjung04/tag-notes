@@ -85,7 +85,7 @@ textarea {
 }
 
 #selected {
-	background-color: #ECECEA;
+	background-color: #F5F5F5;
 }
 
 h5 {
@@ -99,4 +99,8 @@ h5 {
 	font-weight: normal;
 	color: #D9853B;
 	margin: 5px;
+}
+
+label[for='idea-body'] {
+	margin-top: 5px;
 }

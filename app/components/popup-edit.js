@@ -51,7 +51,7 @@ var PopupEdit = React.createClass({
 
 		return (
 			<PopupAbstract {...this.props} addTag={this.handleAddTag} removeTag={this.handleRemoveTag} changeHeader={this.handleChangeHeader} 
-						changeBody={this.handleChangeBody} buttons={buttons} allTags={this.props.tags} header={this.state.header} 
+						changeBody={this.handleChangeBody} buttons={buttons} allTags={this.props.allTags} header={this.state.header} 
 						tags={this.state.tags} body={this.state.body} />
 
 		);

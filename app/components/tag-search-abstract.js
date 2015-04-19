@@ -43,11 +43,18 @@ var TagSearchAbstract = React.createClass({
 			width: 30 + inputWidth
 		});
 	},
+	handleSuggestionClick: function(tag) {
+		this.props.suggestionClick(tag);
+		this.setState({
+	    	searchTag: '',
+	    	width: 30
+	    });
+	},
 	render: function() {
 		return (
 			<div>
 				<Input type='text' value={this.state.searchTag} onKeyDown={this.handleKeydown} onChange={this.handleChange} ref='input' style={{width:this.state.width}} />
-				<TagSuggestion suggestionTags={this.props.suggestionTags} searchTag={this.state.searchTag} count={this.props.count} />
+				<TagSuggestion suggestionTags={this.props.suggestionTags} searchTag={this.state.searchTag} count={this.props.count} suggestionClick={this.handleSuggestionClick}/>
 			</div>
 		);
 	}

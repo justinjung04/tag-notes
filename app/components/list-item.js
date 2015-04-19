@@ -20,7 +20,7 @@ var ListItem = React.createClass({
 		}.bind(this));
 
 		return (
-			<ModalTrigger modal={<PopupEdit updateIdea={this.handleUpdateIdea} deleteIdea={this.handleDeleteIdea} header={this.props.header} tags={this.props.tags} body={this.props.body} />}>
+			<ModalTrigger modal={<PopupEdit updateIdea={this.handleUpdateIdea} deleteIdea={this.handleDeleteIdea} allTags={this.props.allTags} header={this.props.header} tags={this.props.tags} body={this.props.body} />}>
                 <ListGroupItem>
 					<b>{this.props.header}</b> {tagLabels}
 				</ListGroupItem>
