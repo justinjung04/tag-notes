@@ -6,25 +6,25 @@ var TagSearchPopup = React.createClass({
 	getInitialState: function() {
 		return {
 			suggestionTags: [],
-			count: 0
+			count: -1
 		};
 	},
 	handleEnterPressed: function(tag) {
-		if(this.state.suggestionTags.length > 0) {
-			this.props.addTag(this.state.suggestionTags[this.state.count]);
-    	} else {
+    	if(this.state.count == -1) {
     		this.props.addTag(tag);
+    	} else {
+    		this.props.addTag(this.state.suggestionTags[this.state.count]);
     	}
     	this.setState({
 	    	suggestionTags: [],
-	    	count: 0
+	    	count: -1
 	    });
 	},
 	handleBackSpacePressed: function(tag) {
     	this.props.removeTag(tag);
 	},
 	handleUpArrowPressed: function() {
-		if(this.state.count > 0) {
+		if(this.state.count > -1) {
     		var count = this.state.count - 1;
     		this.setState({
     			count: count
@@ -56,7 +56,7 @@ var TagSearchPopup = React.createClass({
 		this.props.addTag(tag);
     	this.setState({
 	    	suggestionTags: [],
-	    	count: 0
+	    	count: -1
 	    });
 	},
 	render: function() {

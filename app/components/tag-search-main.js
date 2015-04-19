@@ -6,23 +6,23 @@ var TagSearchMain = React.createClass({
 	getInitialState: function() {
 		return {
 			suggestionTags: [],
-			count: 0
+			count: -1
 		};
 	},
 	handleEnterPressed: function() {
-		if(this.state.suggestionTags.length > 0) {
+		if(this.state.count != -1) {
     		this.props.addFilterTag(this.state.suggestionTags[this.state.count]);
     	}
     	this.setState({
 	    	suggestionTags: [],
-	    	count: 0
+	    	count: -1
 	    });
 	},
 	handleBackSpacePressed: function() {
     	this.props.removeFilterTag();
 	},
 	handleUpArrowPressed: function() {
-		if(this.state.count > 0) {
+		if(this.state.count > -1) {
     		var count = this.state.count - 1;
     		this.setState({
     			count: count
@@ -54,7 +54,7 @@ var TagSearchMain = React.createClass({
 		this.props.addFilterTag(tag);
     	this.setState({
 	    	suggestionTags: [],
-	    	count: 0
+	    	count: -1
 	    });
 	},
 	render: function() {
