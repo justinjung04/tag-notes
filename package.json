@@ -1,5 +1,5 @@
 {
-  "name": "SpitItOut",
+  "name": "TagNotes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,16 +8,8 @@
     "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/justinjung90/SpitItOut.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/justinjung90/SpitItOut/issues"
-  },
-  "homepage": "https://github.com/justinjung90/SpitItOut",
+  "author": "Justin Jung",
+  "license": "All Rights Reserved",
   "devDependencies": {
     "bootstrap": "^3.3.4",
     "css-loader": "^0.9.1",

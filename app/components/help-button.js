@@ -11,12 +11,12 @@ var HelpModal = React.createClass({
 			<Modal {...this.props}>
 				<div className='modal-body'>
 					<h4>Introduction</h4>
-					<p><b>Tag Notes</b> introduces revolutionary design for saving/sorting notes. Instead of following traditional folder system, 
+					<p><b>Tag Notes</b> introduces a revolutionary design for saving/sorting notes. Instead of following the traditional folder system, 
 					notes are saved and sorted with tags ONLY.</p>
 					<br />
 					<h4>Writing a note</h4>
-					<p>- Make the title <b>simple</b> and <b>intuitive</b>. You don't have to worry about making it unique, since tags will take care of it for you.<br />
-					- Tag your note with <b>keywords</b> that correlates to it. As a default, today's year and date are tagged.</p>
+					<p>- Make the title <b>simple</b> and <b>intuitive</b>. You don't have to worry about making it unique, since tags will do the magic.<br />
+					- Tag your note with <b>keywords</b> that correlates to it. As a default, today's date and year are tagged.</p>
 					<br />
 					<h4>Tagging a note</h4>
 					<p>- To add a tag, <b>type it</b> in the input field and <b>press enter</b>. When you type, tags that you have previously used will be listed below as suggestions.<br/>
