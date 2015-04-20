@@ -33,7 +33,7 @@ var PopupAbstract = React.createClass({
 						<TagSearchPopup allTags={this.props.allTags} tags={this.props.tags} addTag={this.handleAddTag} removeTag={this.handleRemoveTag} />
 					</div>
 					<br /><br />
-					<Input ref='body' onChange={this.handleChangeBody} id="idea-body" type='textarea' rows="10" value={this.props.body} placeholder='Body' />
+					<Input ref='body' onChange={this.handleChangeBody} id="idea-body" type='textarea' rows="15" value={this.props.body} placeholder='Body' />
 		        </div>
 		        <div className='modal-footer'>
 		        	{this.props.buttons}
