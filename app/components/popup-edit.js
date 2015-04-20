@@ -46,8 +46,8 @@ var PopupEdit = React.createClass({
 	},
 	render: function() {
 		var buttons = [];
-		buttons.push(<Button bsStyle="success" onClick={this.handleUpdateIdea}>Save</Button>);
-		buttons.push(<Button bsStyle="success" style={{float:'left'}} onClick={this.handleDeleteIdea}>Delete</Button>);
+		buttons.push(<Button id='button' onClick={this.handleUpdateIdea}>Save</Button>);
+		buttons.push(<Button id='button' style={{float:'left'}} onClick={this.handleDeleteIdea}>Delete</Button>);
 
 		return (
 			<PopupAbstract {...this.props} addTag={this.handleAddTag} removeTag={this.handleRemoveTag} changeHeader={this.handleChangeHeader} 

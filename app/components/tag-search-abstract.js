@@ -35,7 +35,7 @@ var TagSearchAbstract = React.createClass({
 		var searchTag = this.refs.input.getValue().toString();
 		var canvas = document.createElement('canvas');
 		var ctx = canvas.getContext("2d");
-		ctx.font = "14px Arial";        
+		ctx.font = "14px Montserrat";        
 		var inputWidth = ctx.measureText(searchTag).width;
 		this.props.getSuggestionTags(searchTag);
 		this.setState({

@@ -9,9 +9,15 @@ var TagSearchMain = React.createClass({
 			count: -1
 		};
 	},
-	handleEnterPressed: function() {
+	handleEnterPressed: function(filterTag) {
 		if(this.state.count != -1) {
     		this.props.addFilterTag(this.state.suggestionTags[this.state.count]);
+    	} else {
+    		this.props.tags.forEach(function(tag) {
+	    		if(tag == filterTag) {
+	    			this.props.addFilterTag(filterTag);
+	    		}
+	    	}.bind(this));
     	}
     	this.setState({
 	    	suggestionTags: [],

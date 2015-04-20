@@ -1,27 +1,32 @@
 body {
-	background: #F3FAB6;
+	background-image: url('../images/background.jpg');
+	font-family: 'Montserrat', sans-serif;
 }
 
-#add-button {
-    width: 100%;
+#button {
+    color: #A8CD1B;
+	background-color: transparent;
+	border: 1px solid #A8CD1B;
 }
 
 #tag-card {
-	color: white;
+	color: #558C89;
 	border-radius: 0px;
-	background-color: #558C89;
+	background-color: transparent;
+	border: 1px solid #558C89;
 	margin: 5px;
 }
 
 #tag-card-filtered {
-	color: white;
+	color: #D9853B;
 	border-radius: 0px;
-	background-color: #D9853B;
+	background-color: transparent;
+	border: 1px solid #D9853B;
 	margin: 5px;
 }
 
-#tag-card:hover {
-	background-color: #74AFAD;
+#tag-card:hover, #tag-card-filtered:hover, #suggestion > .list-group > .list-group-item:hover, #suggestion > .list-group > #selected, #button:hover{
+	background-color: #F5F5F5;
 }
 
 #submit-button {
@@ -33,12 +38,8 @@ body {
 	resize: none;
 }
 
-.list-group-item {
-	cursor: pointer;
-}
-
 .list-group-item:hover {
-	background-color: #ECECEA;
+	background-color: black;
 }
 
 #change-view-button {
@@ -82,15 +83,19 @@ textarea {
 
 #suggestion > .list-group > .list-group-item {
 	padding: 5px 7px;
+	background-color: white;
 }
 
-#selected {
-	background-color: #F5F5F5;
+.list-group-item {
+	background-color: transparent;
+	border: 1px solid #CCC;
+	cursor: pointer;
 }
 
 h5 {
 	font-weight: bold;
 	margin-bottom: 0px;
+	color: #555;
 }
 
 .label-default {
@@ -99,8 +104,46 @@ h5 {
 	font-weight: normal;
 	color: #D9853B;
 	margin: 5px;
+	display: inline-block;
 }
 
-label[for='idea-body'] {
-	margin-top: 5px;
+hr {
+	border: 1px dashed #CCC;
+}
+
+.idea-body, .idea-header {
+	border: none;
+}
+
+h4 {
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 1;
+	color: #777;
+}
+
+h1 {
+	font-size: 40px;
+	display: inline-block;
+	margin-bottom: 30px;
+}
+
+h1 small {
+	font-size: 20px;
+}
+
+.list-group-item > b {
+	font-size: 15px;
+	word-wrap: break-word;
+}
+
+.modal-footer {
+	border-top: none;
+	padding-top: 0px;
+}
+
+img {
+	vertical-align: -7px;
+	margin-right: 10px;
+	margin-left: 10px;
 }

@@ -21,10 +21,10 @@ var TagView = React.createClass({
 
 		this.props.tags.forEach(function(tag) {
 			if(this.props.filterTags.indexOf(tag) == -1) {
-				if((tag.substr(0,1) != startingLetter) && (this.props.filterTags.indexOf(tag) == -1)) {
-					startingLetter = tag.substr(0,1);
-					tagButtons.push(<h4>{startingLetter.toUpperCase()}</h4>);
-				}
+				// if((tag.substr(0,1) != startingLetter) && (this.props.filterTags.indexOf(tag) == -1)) {
+				// 	startingLetter = tag.substr(0,1);
+				// 	tagButtons.push(<h4>{startingLetter.toUpperCase()}</h4>);
+				// }
 				tagButtons.push(<TagButton clickTag={this.handleAddFilterTag} tag={tag} id='tag-card' />);	
 			}
 		}.bind(this));		
@@ -36,7 +36,7 @@ var TagView = React.createClass({
 				<div id='tag-search'>
 					<TagSearchMain {...this.props} />
 				</div>
-				<br /><br />
+				<br /><hr />
 				{tagButtons}
 			</div>
 		);

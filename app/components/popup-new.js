@@ -5,9 +5,16 @@ var Button = ReactBootstrap.Button;
 
 var PopupNew = React.createClass({
 	getInitialState: function() {
+		var d = new Date();
+		var month = d.getMonth() + 1;
+		var date = d.getDate();
+		var year = d.getFullYear();
+		var tags = [];
+		tags.push(year);
+		tags.push(month + '/' + date);
 		return {
 			header: '',
-			tags: [],
+			tags: tags,
 			body: ''
 		};
 	},
@@ -50,7 +57,7 @@ var PopupNew = React.createClass({
 	},
 	render: function() {
 		var buttons = [];
-		buttons.push(<Button bsStyle="success" onClick={this.handleAddIdea}>Add</Button>);
+		buttons.push(<Button id='button' onClick={this.handleAddIdea}>Add</Button>);
 
 		return (
 			<PopupAbstract {...this.props} addTag={this.handleAddTag} removeTag={this.handleRemoveTag} changeHeader={this.handleChangeHeader} 

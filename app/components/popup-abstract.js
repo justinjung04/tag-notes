@@ -27,13 +27,13 @@ var PopupAbstract = React.createClass({
 		return (
 			<Modal {...this.props}>
 		        <div className='modal-body'>
-		        	<Input ref='header' onChange={this.handleChangeHeader} type='text' label='Title' value={this.props.header} />
-					<h5>Tags</h5>
+		        	<Input ref='header' onChange={this.handleChangeHeader} id="idea-header" type='text' value={this.props.header} placeholder='Title' />
 					{tagButtons}
 					<div id='tag-search'>
 						<TagSearchPopup allTags={this.props.allTags} tags={this.props.tags} addTag={this.handleAddTag} removeTag={this.handleRemoveTag} />
 					</div>
-					<Input ref='body' onChange={this.handleChangeBody} id="idea-body" type='textarea' label='Body' rows="10" value={this.props.body} />
+					<br /><br />
+					<Input ref='body' onChange={this.handleChangeBody} id="idea-body" type='textarea' rows="10" value={this.props.body} placeholder='Body' />
 		        </div>
 		        <div className='modal-footer'>
 		        	{this.props.buttons}
