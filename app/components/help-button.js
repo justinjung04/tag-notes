@@ -20,12 +20,12 @@ var HelpModal = React.createClass({
 					<br />
 					<h4>Tagging a note</h4>
 					<p>- To add a tag, <b>type it</b> in the input field and <b>press enter</b>. When you type, tags that you have previously used will be listed below as suggestions.<br/>
-					- To delete a tag, <b>press backspace</b> from the input field or <b>click the tag</b>.</p>
+					- To remove a tag, <b>press backspace</b> from the input field or <b>click the tag</b>.</p>
 					<br />
 					<h4>Sorting a list of notes</h4>
 					<p>- From the main page, use the left-side to sort with tags.<br />
 					- To add a filter tag, <b>type it</b> in the input field and <b>press enter</b> or <b>click a tag</b> from below.<br />
-					- To delete a filter tag, <b>press backspace</b> from the input field or <b>click the tag</b>.</p>
+					- To remove a filter tag, <b>press backspace</b> from the input field or <b>click the tag</b>.</p>
 					<br />
 					<br />
 					<p style={{textAlign:'right', color:'#777', fontSize:'12px'}}>&copy; 2015 Justin Jung All Rights Reserved</p>
