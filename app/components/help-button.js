@@ -11,7 +11,7 @@ var HelpModal = React.createClass({
 			<Modal {...this.props}>
 				<div className='modal-body'>
 					<h4>Introduction</h4>
-					<p><b>Tag Notes</b> introduces a revolutionary design for saving/sorting notes. Instead of following the traditional folder system, 
+					<p><b>Tag Notes</b> introduces a smart design for saving/sorting notes. Instead of following the traditional folder system, 
 					notes are saved and sorted with tags ONLY.</p>
 					<br />
 					<h4>Writing a note</h4>
@@ -26,6 +26,9 @@ var HelpModal = React.createClass({
 					<p>- From the main page, use the left-side to sort with tags.<br />
 					- To add a filter tag, <b>type it</b> in the input field and <b>press enter</b> or <b>click a tag</b> from below.<br />
 					- To remove a filter tag, <b>press backspace</b> from the input field or <b>click the tag</b>.</p>
+					<br />
+					<h4>Commercial launching</h4>
+					<p>Commercial website with user accounts will be launched soon. Stay tuned!</p>
 					<br />
 					<br />
 					<p style={{textAlign:'right', color:'#777', fontSize:'12px'}}>&copy; 2015 Justin Jung All Rights Reserved</p>
