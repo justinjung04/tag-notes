@@ -9,27 +9,43 @@ var Col = ReactBootstrap.Col;
 
 require('./styles/main.css');
 
-var IDEAS = [
-	{id: 0, body: 'http://www.cbc.ca/news/technology/sony-tv-producers-force-netflix-to-fight-technology-that-jumps-geofences-1.3037747', header: 'Netflix', tags:['2015', '4/16', 'news', 'url']},
-	{id: 1, body: '- Created component tree diagram for subclasses\n- Fixed bug #32\n- Implemented new function for ListView', header: 'Milestones - BM0', tags: ['2015', '4/17', 'bm0', 'personal project']},
-	{id: 2, body: 'See You Again - Wiz Khalifa\nUptown Funk - Mark Ronson\nSugar - Maroon 5\nTrap Queen - Fetty Wap\nThinking Out Loud - Ed Sheeran', header: 'Billboard top 5', tags: ['2015', '4/17', 'song']},
-	{id: 3, body: 'Mobile app for expense management. Number of options already available at Google Play, but none of them seem to be the best fit.', header: 'Expense manager', tags: ['2015', '4/17', 'idea', 'software']},
-	{id: 4, body: '- Steak\n- Lattice\n- Potato\n- Greek Salad Sauce\n- Applie Juice', header: 'Grocery', tags: ['2015', '4/18', 'grocery']},
-	{id: 5, body: '- Call CRA\n- Buy a gift for anniversary', header: 'Daily todo', tags: ['2015', '4/18', 'todo']},
-	{id: 6, body: 'An alarm clock that feeds a person at specified time. For example, at 7:00AM, the clock finds a person\'s mouth and feeds a piece of apple.', header: 'Food alarm clock', tags: ['2015', '4/18', 'hardware', 'idea']},
-	{id: 7, body: '- Update resume\n- Upload the website to public domain\n- Bake pancake', header: 'Daily todo', tags: ['2015', '4/19', 'todo']},
-	{id: 8, body: '- [App-to-server] Save real-time data from app to server\n- [Device firmware] Update C# for data formatting\n- [User interface] Create custom plot\n\nDue 2015/05/01', header: 'Action items', tags: ['2015', '4/19', 'due 5/1', 'todo', 'work']},
-	{id: 9, body: 'A small pedometer that can be attached to anywhere. Bluetooth communication for data transmission could be optional.', header: 'Attachable pedometer', tags: ['2015', '4/19', 'hardware', 'idea']}
-];
+// var IDEAS = [
+// 	{id: 0, body: 'http://www.cbc.ca/news/technology/sony-tv-producers-force-netflix-to-fight-technology-that-jumps-geofences-1.3037747', header: 'Netflix', tags:['2015', '4/16', 'news', 'url']},
+// 	{id: 1, body: '- Created component tree diagram for subclasses\n- Fixed bug #32\n- Implemented new function for ListView', header: 'Milestones - BM0', tags: ['2015', '4/17', 'bm0', 'personal project']},
+// 	{id: 2, body: 'See You Again - Wiz Khalifa\nUptown Funk - Mark Ronson\nSugar - Maroon 5\nTrap Queen - Fetty Wap\nThinking Out Loud - Ed Sheeran', header: 'Billboard top 5', tags: ['2015', '4/17', 'song']},
+// 	{id: 3, body: 'Mobile app for expense management. Number of options already available at Google Play, but none of them seem to be the best fit.', header: 'Expense manager', tags: ['2015', '4/17', 'idea', 'software']},
+// 	{id: 4, body: '- Steak\n- Lattice\n- Potato\n- Greek Salad Sauce\n- Applie Juice', header: 'Grocery', tags: ['2015', '4/18', 'grocery']},
+// 	{id: 5, body: '- Call CRA\n- Buy a gift for anniversary', header: 'Daily todo', tags: ['2015', '4/18', 'todo']},
+// 	{id: 6, body: 'An alarm clock that feeds a person at specified time. For example, at 7:00AM, the clock finds a person\'s mouth and feeds a piece of apple.', header: 'Food alarm clock', tags: ['2015', '4/18', 'hardware', 'idea']},
+// 	{id: 7, body: '- Update resume\n- Upload the website to public domain\n- Bake pancake', header: 'Daily todo', tags: ['2015', '4/19', 'todo']},
+// 	{id: 8, body: '- [App-to-server] Save real-time data from app to server\n- [Device firmware] Update C# for data formatting\n- [User interface] Create custom plot\n\nDue 2015/05/01', header: 'Action items', tags: ['2015', '4/19', 'due 5/1', 'todo', 'work']},
+// 	{id: 9, body: 'A small pedometer that can be attached to anywhere. Bluetooth communication for data transmission could be optional.', header: 'Attachable pedometer', tags: ['2015', '4/19', 'hardware', 'idea']}
+// ];
 
 var Body = React.createClass({
 	getInitialState: function() {
 		return {
-			ideas: IDEAS,
-			tags: this.getTags(IDEAS),
+			ideas: [],
+			tags: [],
 			filterTags: [],
 			nextId: 10
 		};
+	},
+	componentWillMount: function() {
+		var self = this;
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+				var response = JSON.parse(xmlhttp.responseText);
+				console.log(response);
+				self.setState({
+					ideas: response,
+					tags: self.getTags(response)
+				});
+			}
+		}
+		xmlhttp.open("GET", "notes.json", true);
+		xmlhttp.send();
 	},
 	getTags: function(ideas) {
 		var tags = [];
